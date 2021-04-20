@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
-// swift-module-flags: -target arm64-apple-ios14.3 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
 import Foundation
 import Swift
 public enum Environment {
@@ -83,8 +83,10 @@ extension _AnyEncodable {
   public init(arrayLiteral elements: Any...)
   public init(dictionaryLiteral elements: (Swift.AnyHashable, Any)...)
 }
-public struct RemoteProcessorMetadata {
+public struct RemoteProcessorMetadata : Swift.Equatable {
   public init(productIdentifier: Swift.String, productVersion: Swift.String, environment: Swift.String, appPackageName: Swift.String, appPackageVersion: Swift.String, appInstallId: Swift.String, deviceName: Swift.String, platform: Swift.String, osVersion: Swift.String)
+  public init(productIdentifier: Swift.String, productVersion: Swift.String, environment: Swift.String, appPackageName: Swift.String, appPackageVersion: Swift.String, deviceName: Swift.String, platform: Swift.String, osVersion: Swift.String)
+  public static func == (a: CheckoutEventLoggerKit.RemoteProcessorMetadata, b: CheckoutEventLoggerKit.RemoteProcessorMetadata) -> Swift.Bool
 }
 public struct Event : Swift.Equatable {
   public let typeIdentifier: Swift.String
