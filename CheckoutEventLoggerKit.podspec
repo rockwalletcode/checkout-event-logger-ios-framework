@@ -15,4 +15,5 @@ Pod::Spec.new do |s|
 
   s.vendored_frameworks = "CheckoutEventLoggerKit.xcframework"
 
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end
