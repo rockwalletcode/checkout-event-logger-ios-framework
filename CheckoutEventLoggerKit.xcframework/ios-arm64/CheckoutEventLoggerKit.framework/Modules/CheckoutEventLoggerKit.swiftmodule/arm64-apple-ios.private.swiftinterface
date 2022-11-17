@@ -1,9 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
-// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 import Swift
+import UIKit
 import _Concurrency
+import _StringProcessing
 public enum Environment {
   case sandbox
   case production
@@ -96,6 +99,9 @@ public struct Event : Swift.Equatable {
   public var properties: [Swift.String : CheckoutEventLoggerKit.AnyCodable]
   public init(typeIdentifier: Swift.String, time: Foundation.Date, monitoringLevel: CheckoutEventLoggerKit.MonitoringLevel, properties: [Swift.String : CheckoutEventLoggerKit.AnyCodable])
   public static func == (a: CheckoutEventLoggerKit.Event, b: CheckoutEventLoggerKit.Event) -> Swift.Bool
+}
+extension CheckoutEventLoggerKit.RemoteProcessorMetadata {
+  public init(productIdentifier: Swift.String, productVersion: Swift.String, environment: Swift.String)
 }
 public protocol CheckoutEventLogging {
   func log(event: CheckoutEventLoggerKit.Event)
