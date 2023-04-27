@@ -1,10 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
+// swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CheckoutEventLoggerKit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
 import Swift
 import UIKit
 import _Concurrency
+import _StringProcessing
 public enum Environment {
   case sandbox
   case production
@@ -20,7 +22,7 @@ internal protocol _AnyDecodable {
   init<T>(_ value: T?)
 }
 extension CheckoutEventLoggerKit._AnyDecodable {
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct AnyCodable : Swift.Codable {
   public let value: Any
@@ -65,7 +67,7 @@ extension CheckoutEventLoggerKit.AnyCodable : Swift.ExpressibleByDictionaryLiter
   public typealias Value = Any
 }
 extension CheckoutEventLoggerKit.AnyCodable {
-  public static func add(customEquality: @escaping (_ lhs: Any, _ rhs: Any) -> Swift.Bool, customEncoding: @escaping (_ value: Any, _ container: inout Swift.SingleValueEncodingContainer) throws -> Swift.Bool)
+  public static func add(customEquality: @escaping (_ lhs: Any, _ rhs: Any) -> Swift.Bool, customEncoding: @escaping (_ value: Any, _ container: inout any Swift.SingleValueEncodingContainer) throws -> Swift.Bool)
 }
 @usableFromInline
 internal protocol _AnyEncodable {
@@ -73,7 +75,7 @@ internal protocol _AnyEncodable {
   init<T>(_ value: T?)
 }
 extension CheckoutEventLoggerKit._AnyEncodable {
-  public func encode(to encoder: Swift.Encoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
 }
 extension CheckoutEventLoggerKit._AnyEncodable {
   public init(nilLiteral _: ())
