@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   This library contains logging components for Checkout iOS SDKs
                    DESC
   s.homepage     = "https://github.com/checkout/checkout-event-logger-ios-framework"
-  s.swift_version = "5.0"
+  s.swift_version = "5.7"
   s.license      = "MIT"
   s.author       = { "Checkout.com Integration" => "integration@checkout.com" }
   s.platform     = :ios, "11.0"
